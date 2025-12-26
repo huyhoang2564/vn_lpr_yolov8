@@ -1,0 +1,7 @@
+train: E:/VNUK_Project/vn_lpr_yolov8/dataset/lp/images/train
+val: E:/VNUK_Project/vn_lpr_yolov8/dataset/lp/images/val
+
+
+# Classes
+nc:  1 # number of classes
+names: ['license_plate']  # class names
