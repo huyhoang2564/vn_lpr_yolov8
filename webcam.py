@@ -34,22 +34,22 @@ def main():
         yolo_LP_detect = YOLO(LP_MODEL_PATH)
         yolo_license_plate = YOLO(CHAR_MODEL_PATH)
     except Exception as e:
-        print("❌ Lỗi load model! Kiểm tra đường dẫn model hoặc file .pt.")
+        print(" Lỗi load model! Kiểm tra đường dẫn model hoặc file .pt.")
         print(e)
         return
 
     # ---- Open camera ----
     cam_idx = find_camera(5)
     if cam_idx is None:
-        print("❌ Không tìm thấy camera nào (0..5).")
-        print("👉 Kiểm tra: Windows Camera permission + đóng Zalo/Teams/Browser đang dùng cam.")
+        print(" Không tìm thấy camera nào (0..5).")
+        print(" Kiểm tra: Windows Camera permission + đóng Zalo/Teams/Browser đang dùng cam.")
         return
 
-    print(f"✅ Using camera index: {cam_idx}")
+    print(f" Using camera index: {cam_idx}")
     vid = cv2.VideoCapture(cam_idx, cv2.CAP_DSHOW)
 
     if not vid.isOpened():
-        print("❌ Mở camera thất bại.")
+        print(" Mở camera thất bại.")
         return
 
     prev_time = time.time()
@@ -115,7 +115,7 @@ def main():
         elif key == ord("s"):
             out_path = f"debug_frame_{int(time.time())}.jpg"
             cv2.imwrite(out_path, frame)
-            print("✅ Saved:", out_path)
+            print(" Saved:", out_path)
 
     vid.release()
     cv2.destroyAllWindows()

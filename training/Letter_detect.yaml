@@ -1,4 +1,4 @@
-# training/Letter_detect.yaml
+
 path: E:/VNUK_Project/vn_lpr_yolov8/dataset/char
 
 train: images/train
@@ -6,7 +6,7 @@ val: images/val
 
 nc: 31
 
-# index 0..30 (khớp label class id)
+
 names:
   - '0'
   - '1'

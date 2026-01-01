@@ -13,9 +13,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument('-i', '--image', required=True, help='path to input image')
 args = ap.parse_args()
 
-# --- SỬA LOAD MODEL ---
-# Lưu ý: Bạn cần có file model .pt tương thích (train bằng v8 hoặc v5 load được)
-# Nếu bạn chưa train lại, hãy thử dùng file cũ xem có load được không
+
 try:
     yolo_LP_detect = YOLO('model/best_lp.pt') 
     yolo_license_plate = YOLO('model/best_char.pt')
@@ -24,21 +22,19 @@ except Exception as e:
     print(e)
     exit()
 
-# Set confidence nếu cần (với v8 thì truyền lúc predict)
-# yolo_license_plate.conf = 0.60 
+
 
 img = cv2.imread(args.image)
 
-# --- SỬA INFERENCE ---
-# detect biển số
+
 plates_results = yolo_LP_detect(img, imgsz=640, conf=0.25) # conf mặc định
 
-# Lấy list các biển số phát hiện được
+
 list_plates = plates_results[0].boxes.data.tolist()
 
 list_read_plates = set()
 if len(list_plates) == 0:
-    # Nếu không tìm thấy biển, thử detect ký tự trên toàn ảnh (fallback)
+    
     lp = helper.read_plate(yolo_license_plate, img)
     if lp != "unknown":
         cv2.putText(img, lp, (7, 70), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)

@@ -19,7 +19,7 @@ A Vietnamese motorcycle and car license plate recognition system using **YOLOv8*
 ### 1. Clone the project
 Download the project to your computer:
 ```bash
-git clone <YOUR_GITHUB_LINK>
+git clone https://github.com/huyhoang2564/vn_lpr_yolov8.git
 cd vn_lpr_yolov8
 ```
 
